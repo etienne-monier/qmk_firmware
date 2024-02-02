@@ -1,0 +1,4 @@
+qmk compile -kb voyager -km etienne-monier
+
+
+https://github.com/zsa/wally/wiki/Linux-install
