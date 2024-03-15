@@ -1,4 +1,6 @@
 #include QMK_KEYBOARD_H
+//#include "custom_unicode.c"
+
 
 bool undead(uint16_t  character, bool pressed) {
   if (pressed) {
@@ -22,12 +24,43 @@ void unmod(uint16_t keycode) {
   add_weak_mods(weak_mods_state);
 }
 
-bool accented_letter(uint16_t accent, uint16_t letter, bool pressed) {
+bool accented_letter(uint16_t accent, uint16_t letter, uint32_t unicode_index, bool pressed) {
   if (pressed) {                        // On press:
-    unmod(accent);                      // Press accent, unmoded
-    register_code(letter);              // Press letter.
-  } else {                              // On release: (this is for repeats on hold down)
-    unregister_code(letter);            // Release letter
+    if (get_mods() == MOD_BIT(KC_LSFT)){
+      // Send unicode
+      tap_code16(FR_B);                 // Press accent, unmoded
+      unicode_input_start();
+      register_unicodemap(unicode_index);
+      unicode_input_finish();
+    }
+    else {               // Press accent, unmoded
+      tap_code16(accent);                 // Press accent, unmoded
+      tap_code16(letter);                 // Press letter.
+    }
   }                                     // If shift is pressed it'll be released by the user
   return false;                         // Don't continue with the key handling.
+}
+
+bool use_unicode_as_upper(uint32_t unicode_index, bool pressed){
+  if (pressed){
+    if (get_mods() & MOD_MASK_SHIFT){
+      // Send unicode
+      return false;
+    }
+    else {
+      // No Shift, process letter normally.
+      return true;
+    }
+
+  }
+  return false;
+}
+
+// Fix Mod-tap with non-simple keys being tapped.
+bool mod_tap_fix(uint16_t tap_key, bool pressed, int count) {
+  if (count && pressed) {
+    tap_code16(tap_key);
+    return false;
+  }
+  return true;
 }

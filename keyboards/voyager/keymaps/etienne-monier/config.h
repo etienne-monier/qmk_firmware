@@ -19,3 +19,5 @@
 #define UNICODE_CYCLE_PERSIST 	true
 #define UNICODE_TYPE_DELAY 	    10
 
+#define TAPPING_TERM            400  // How long before a key press becomes a hold
+

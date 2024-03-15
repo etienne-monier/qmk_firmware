@@ -1,12 +1,16 @@
+#include QMK_KEYBOARD_H
+
 // ---- Simple keycodes ---- {{{
 
 // homerow mod-taps (aliases for readability + re-use in combo definitions)
+#define HM_A    GUI_T(FR_A)
 #define HM_S    CTL_T(FR_S)
 #define HM_E    ALT_T(FR_E)
 #define HM_N    SFT_T(FR_N)
 #define HM_R    SFT_T(FR_R)
 #define HM_T    ALT_T(FR_T)
 #define HM_I    CTL_T(FR_I)
+#define HM_U    GUI_T(FR_U)
 
 // Tab navigation
 #define PREV_T  C(S(KC_TAB))
@@ -36,14 +40,22 @@
 #define MOVE_9 C(G(KC_9))
 #define MOVE_0 C(G(KC_0))
 
-#define DEL_W   C(G(FR_A))
-#define H_STACK CTL_T(G(FR_H))
-#define V_STACK ALT_T(G(FR_V))
+#define DEL_W   CTL_T(C(G(FR_A)))
+#define TERM    ALT_T(G(KC_ENTER))
 #define MENU    SFT_T(G(FR_D))
-#define DISPLAY C(G(FR_D))
 #define SCR_OFF C(G(FR_X))
+#define H_STACK GUI_T(G(FR_H))
+#define V_STACK G(FR_V)
 #define REBOOT  C(G(FR_R))
+#define RESIZE  G(FR_R)
+#define DISPLAY C(G(FR_D))
 
+#define I3_LEFT G(KC_LEFT)
+#define I3_DOWN G(KC_DOWN)
+#define I3_UP   G(KC_UP)
+#define I3_RGHT G(KC_RGHT)
+
+#define E_COMMT C(S(FR_COLN))
 
 #define KC_MAC_UNDO LGUI(KC_Z)
 #define KC_MAC_CUT LGUI(KC_X)
@@ -80,6 +92,7 @@ enum custom_keycodes {
   U_GRV,
   A_CIRC,
   I_CIRC,
+  I_TREM,
   O_CIRC,
   U_CIRC,
   C_CED,
@@ -94,6 +107,8 @@ enum custom_keycodes {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   const bool pressed = record->event.pressed;
+  const int count = record->tap.count;
+  // const uint8_t mod_state = get_mods();
 
   switch (keycode) {
 
@@ -102,15 +117,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case UD_CIRC: return undead(FR_CIRC, pressed);
 
     // Accented letters with dead key
-    case E_CIRC: return accented_letter(FR_CIRC,  FR_E, pressed);
-    case A_CIRC: return accented_letter(FR_CIRC,  FR_A, pressed);
-    case I_CIRC: return accented_letter(FR_CIRC,  FR_I, pressed);
-    case O_CIRC: return accented_letter(FR_CIRC,  FR_O, pressed);
-    case U_CIRC: return accented_letter(FR_CIRC,  FR_U, pressed);
+    case E_CIRC: return accented_letter(FR_CIRC,  FR_E, SNEK, pressed);
+    case A_CIRC: return accented_letter(FR_CIRC,  FR_A, SNEK, pressed);
+    case I_CIRC: return accented_letter(FR_CIRC,  FR_I, SNEK, pressed);
+    case O_CIRC: return accented_letter(FR_CIRC,  FR_O, SNEK, pressed);
+    case U_CIRC: return accented_letter(FR_CIRC,  FR_U, SNEK, pressed);
+    case I_TREM: return accented_letter(S(FR_CIRC),  FR_I, SNEK, pressed);
+
+    // Mod-tap with complex tapped keys
+    case H_STACK: return mod_tap_fix(C(G(FR_H)), pressed, count);
+    case DEL_W: return mod_tap_fix(C(G(FR_A)), pressed, count);
+    case TERM: return mod_tap_fix(G(KC_ENTER), pressed, count);
+    case MENU: return mod_tap_fix(G(FR_D), pressed, count);
+
+    // Accented letters:
 
     // RGB keys
     case RGB_SLD:
       if (pressed) {
+        // Put insto static colour.
         rgblight_mode(1);
       }
       return false;

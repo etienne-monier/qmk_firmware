@@ -10,4 +10,6 @@ SPACE_CADET_ENABLE = no
 CAPS_WORD_ENABLE = yes
 COMBO_ENABLE = yes
 KEY_OVERRIDE_ENABLE = yes
-UNICODE_COMMON = yes
+
+# To use unicode mapping
+UNICODEMAP_ENABLE = yes
