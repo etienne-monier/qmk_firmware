@@ -13,3 +13,5 @@ KEY_OVERRIDE_ENABLE = yes
 
 # To use unicode mapping
 UNICODEMAP_ENABLE = yes
+
+# KEY_LOCK_ENABLE = yes

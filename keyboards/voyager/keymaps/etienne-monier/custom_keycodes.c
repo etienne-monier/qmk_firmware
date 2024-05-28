@@ -3,22 +3,22 @@
 // ---- Simple keycodes ---- {{{
 
 // homerow mod-taps (aliases for readability + re-use in combo definitions)
-#define HM_A    GUI_T(FR_A)
-#define HM_S    CTL_T(FR_S)
-#define HM_E    ALT_T(FR_E)
-#define HM_N    SFT_T(FR_N)
-#define HM_R    SFT_T(FR_R)
-#define HM_T    ALT_T(FR_T)
-#define HM_I    CTL_T(FR_I)
-#define HM_U    GUI_T(FR_U)
+#define HM_A    GUI_T(EG_A)
+#define HM_S    CTL_T(EG_S)
+#define HM_E    ALT_T(EG_E)
+#define HM_N    SFT_T(EG_N)
+#define HM_R    SFT_T(EG_R)
+#define HM_T    ALT_T(EG_T)
+#define HM_I    CTL_T(EG_I)
+#define HM_U    GUI_T(EG_U)
 
 // Tab navigation
 #define PREV_T  C(S(KC_TAB))
 #define NEXT_T  C(KC_TAB)
-#define CLOSE_T C(FR_W)
-#define OPEN_T  C(FR_T)
+#define CLOSE_T C(EG_W)
+#define OPEN_T  C(EG_T)
 
-// Workspace navigation
+// I3 Workspace navigation
 #define WORKS_1 G(KC_1)
 #define WORKS_2 G(KC_2)
 #define WORKS_3 G(KC_3)
@@ -40,68 +40,70 @@
 #define MOVE_9 C(G(KC_9))
 #define MOVE_0 C(G(KC_0))
 
-#define DEL_W   CTL_T(C(G(FR_A)))
+// I3 commands
+#define DEL_W   CTL_T(C(G(EG_A)))
 #define TERM    ALT_T(G(KC_ENTER))
-#define MENU    SFT_T(G(FR_D))
-#define SCR_OFF C(G(FR_X))
-#define H_STACK GUI_T(G(FR_H))
-#define V_STACK G(FR_V)
-#define REBOOT  C(G(FR_R))
-#define RESIZE  G(FR_R)
-#define DISPLAY C(G(FR_D))
+#define MENU    SFT_T(G(EG_D))
+#define SCR_OFF C(G(EG_X))
+#define H_STACK GUI_T(G(EG_H))
+#define V_STACK G(EG_V)
+#define REBOOT  C(G(EG_Z))
+#define RESIZE  G(EG_X)
+#define DISPLAY C(G(EG_D))
 
-#define I3_LEFT G(KC_LEFT)
-#define I3_DOWN G(KC_DOWN)
-#define I3_UP   G(KC_UP)
-#define I3_RGHT G(KC_RGHT)
+#define XWORK_1 S(G(EG_Q))
+#define XWORK_2 S(G(EG_C))
+#define XWORK_3 S(G(EG_O))
+#define XWORK_4 S(G(EG_P))
+#define XWORK_5 S(G(EG_W))
+#define XWORK_6 S(G(EG_J))
+#define XWORK_7 S(G(EG_M))
+#define XWORK_8 S(G(EG_D))
+#define XWORK_9 S(G(EG_V))
+#define XWORK_0 S(G(EG_F))
+#define XMOVE_1 S(G(KC_F1))
+#define XMOVE_2 S(G(KC_F2))
+#define XMOVE_3 S(G(KC_F3))
+#define XMOVE_4 S(G(KC_F4))
+#define XMOVE_5 S(G(KC_F5))
+#define XMOVE_6 S(G(KC_F6))
+#define XMOVE_7 S(G(KC_F7))
+#define XMOVE_8 S(G(KC_F8))
+#define XMOVE_9 S(G(KC_F9))
+#define XMOVE_0 S(G(KC_F10))
+#define XDEL_W S(G(EG_S))
+#define XTERM S(G(EG_E))
+#define XMENU S(G(EG_N))
+#define XFULLSC S(G(EG_B))
+#define XH_STAC S(G(EG_A))
+#define XV_STAC S(G(EG_Z))
+#define XREBOOT S(G(EG_X))
+#define XRESIZL S(G(KC_LEFT))
+#define XRESIZR S(G(KC_RIGHT))
+#define XRESIZU S(G(KC_UP))
+#define XRESIZD S(G(KC_DOWN))
+#define XFOCUSL S(G(EG_R))
+#define XFOCUSR S(G(EG_U))
+#define XFOCUSU S(G(EG_I))
+#define XFOCUSD S(G(EG_T))
+#define XMOVEL S(G(EG_H))
+#define XMOVER S(G(EG_K))
+#define XMOVEU S(G(EG_Y))
+#define XMOVED S(G(EG_G))
 
-#define E_COMMT C(S(FR_COLN))
 
-#define KC_MAC_UNDO LGUI(KC_Z)
-#define KC_MAC_CUT LGUI(KC_X)
-#define KC_MAC_COPY LGUI(KC_C)
-#define KC_MAC_PASTE LGUI(KC_V)
-#define KC_PC_UNDO LCTL(KC_Z)
-#define KC_PC_CUT LCTL(KC_X)
-#define KC_PC_COPY LCTL(KC_C
-#define KC_PC_PASTE LCTL(KC_V)
-#define ES_LESS_MAC KC_GRAVE
-#define ES_GRTR_MAC LSFT(KC_GRAVE)
-#define ES_BSLS_MAC ALGR(KC_6)
-#define NO_PIPE_ALT KC_GRAVE
-#define NO_BSLS_ALT KC_EQUAL
-#define LSA_T(kc) MT(MOD_LSFT | MOD_LALT, kc)
-#define BP_NDSH_MAC ALGR(KC_8)
-#define SE_SECT_MAC ALGR(KC_6)
-#define MOON_LED_LEVEL LED_LEVEL
+
+
+// Editor keycodes
+#define  E_DEL_L C(S(EG_K))
+
 
 // ---- END Simple keycodes ----
 
 // ---- Less simple keycodes ----
 
 enum custom_keycodes {
-  // Undead characters
-  UD_GRV = SAFE_RANGE,
-  UD_CIRC,
-
-  // Accented letters
-  E_ACUTE,
-  E_GRV,
-  E_CIRC,
-  A_GRV,
-  U_GRV,
-  A_CIRC,
-  I_CIRC,
-  I_TREM,
-  O_CIRC,
-  U_CIRC,
-  C_CED,
-
-  // RGB LED keys
-  RGB_SLD,
-  COLOR_R,
-  COLOR_G,
-  COLOR_B,
+  E_BLOCK = SAFE_RANGE,
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -112,51 +114,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   switch (keycode) {
 
-    // Undead characters
-    case UD_GRV:  return undead(FR_GRV,  pressed);
-    case UD_CIRC: return undead(FR_CIRC, pressed);
-
-    // Accented letters with dead key
-    case E_CIRC: return accented_letter(FR_CIRC,  FR_E, SNEK, pressed);
-    case A_CIRC: return accented_letter(FR_CIRC,  FR_A, SNEK, pressed);
-    case I_CIRC: return accented_letter(FR_CIRC,  FR_I, SNEK, pressed);
-    case O_CIRC: return accented_letter(FR_CIRC,  FR_O, SNEK, pressed);
-    case U_CIRC: return accented_letter(FR_CIRC,  FR_U, SNEK, pressed);
-    case I_TREM: return accented_letter(S(FR_CIRC),  FR_I, SNEK, pressed);
-
     // Mod-tap with complex tapped keys
-    case H_STACK: return mod_tap_fix(C(G(FR_H)), pressed, count);
-    case DEL_W: return mod_tap_fix(C(G(FR_A)), pressed, count);
+    case H_STACK: return mod_tap_fix(C(G(EG_H)), pressed, count);
+    case DEL_W: return mod_tap_fix(C(G(EG_A)), pressed, count);
     case TERM: return mod_tap_fix(G(KC_ENTER), pressed, count);
-    case MENU: return mod_tap_fix(G(FR_D), pressed, count);
+    case MENU: return mod_tap_fix(G(EG_D), pressed, count);
 
-    // Accented letters:
-
-    // RGB keys
-    case RGB_SLD:
-      if (pressed) {
-        // Put insto static colour.
-        rgblight_mode(1);
-      }
-      return false;
-    case COLOR_R:
-      if (pressed) {
-        rgblight_mode(1);
-        rgblight_sethsv(0,255,255);
-      }
-      return false;
-    case COLOR_G:
-      if (pressed) {
-        rgblight_mode(1);
-        rgblight_sethsv(74,255,255);
-      }
-      return false;
-    case COLOR_B:
-      if (pressed) {
-        rgblight_mode(1);
-        rgblight_sethsv(169,255,255);
-      }
-      return false;
+    case E_BLOCK: return tap_key_list(C(EG_1), C(EG_2), pressed);
 
     default:
       return true;

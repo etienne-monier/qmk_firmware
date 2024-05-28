@@ -1,19 +1,25 @@
 #include QMK_KEYBOARD_H
 
-
-#define c_none     {0,0,0}
-#define c_red      {0,255,255}
-#define c_orange   {21,255,255}
-#define c_yellow   {43,255,255}
-#define c_green_chartreuse  {64,255,255}
-#define c_green    {85,255,255}
-#define c_spring_green      {106,255,255}
-#define c_cyan     {128,255,255}
-#define c_azure    {149,255,255}
-#define c_blue     {170,255,255}
-#define c_violet   {191,255,255}
-#define c_magenta  {213,255,255}
-#define c_rose     {234,255,255}
+/*
+Colors are defined as HSV (hue, saturation, and valus)
+- Hue is an angle which controls the color. This is codded
+  on 8 bits. 0 is angle 0 degres and 255 is 360 degres.
+- saturation lays between 0 (no color) and 255 (full color).
+- value controls brightness on8 bits.
+*/
+#define C_NONE    {0,0,0}
+#define C_RED     {0,255,255}
+#define C_ORANG   {21,255,255}
+#define C_YELLO   {43,255,255}
+#define C_CHART   {64,255,255}   // Green chartreuse
+#define C_GREEN   {85,255,255}
+#define C_SPRIN   {106,255,255}  // Spring green
+#define C_CYAN    {128,255,255}
+#define C_AZURE   {149,255,255}
+#define C_BLUE    {170,255,255}
+#define C_VIOLE   {191,255,255}
+#define C_MAGEN   {213,255,255}
+#define C_ROSE    {234,255,255}
 
 extern rgb_config_t rgb_matrix_config;
 
@@ -23,58 +29,70 @@ void keyboard_post_init_user(void) {
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [0] = {
-      c_blue,  c_blue,  c_blue,  c_blue,  c_blue,  c_blue,
-      c_blue,  c_blue,  c_blue,  c_blue,  c_blue,  c_blue,
-      c_blue,  c_blue,  c_blue,  c_blue,  c_blue,  c_blue,
-      c_blue,  c_blue,  c_blue,  c_blue,  c_blue,  c_blue,
-                                          c_blue,  c_blue,
+      C_BLUE,  C_BLUE,  C_BLUE,  C_BLUE,  C_BLUE,  C_BLUE,
+      C_BLUE,  C_BLUE,  C_BLUE,  C_BLUE,  C_BLUE,  C_BLUE,
+      C_BLUE,  C_BLUE,  C_BLUE,  C_BLUE,  C_BLUE,  C_BLUE,
+      C_ROSE,  C_BLUE,  C_BLUE,  C_BLUE,  C_BLUE,  C_BLUE,
+                                          C_BLUE,  C_BLUE,
 
-      c_blue,  c_blue,  c_blue,  c_blue,  c_blue,  c_blue,
-      c_blue,  c_blue,  c_blue,  c_blue,  c_blue,  c_blue,
-      c_blue,  c_blue,  c_blue,  c_blue,  c_blue,  c_blue,
-      c_blue,  c_blue,  c_blue,  c_blue,  c_blue,  c_blue,
-      c_blue,  c_blue
+      C_BLUE,  C_BLUE,  C_BLUE,  C_BLUE,  C_BLUE,  C_BLUE,
+      C_BLUE,  C_BLUE,  C_BLUE,  C_ROSE,  C_BLUE,  C_BLUE,
+      C_BLUE,  C_BLUE,  C_BLUE,  C_BLUE,  C_BLUE,  C_BLUE,
+      C_BLUE,  C_BLUE,  C_BLUE,  C_BLUE,  C_BLUE,  C_ROSE,
+      C_BLUE,  C_BLUE
     },
     [1] = {
-      c_none,  c_none,    c_none,    c_none,    c_none,    c_none,
-      c_none,  c_orange,  c_orange,  c_orange,  c_orange,  c_orange,
-      c_none,  c_orange,  c_orange,  c_orange,  c_orange,  c_orange,
-      c_none,  c_none,    c_none,    c_none,    c_none,    c_orange,
-                                                c_none,    c_none,
+      C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN,
+      C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN,
+      C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN,
+      C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN,
+                                          C_SPRIN, C_SPRIN,
 
-      c_none,  c_none,  c_none,    c_none,    c_none,    c_none,
-      c_none,  c_none,  c_none,    c_none,    c_none,    c_none,
-      c_none,  c_none,  c_orange,  c_orange,  c_orange,  c_none,
-      c_none,  c_none,  c_none,    c_none,    c_none,    c_none,
-      c_none,    c_none,
+      C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN, C_AZURE,
+      C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN, C_AZURE,
+      C_SPRIN, C_ROSE,  C_ROSE,  C_ROSE,  C_ROSE,  C_AZURE,
+      C_SPRIN, C_ORANG, C_YELLO, C_YELLO, C_ORANG, C_AZURE,
+      C_SPRIN, C_SPRIN
     },
     [2] = {
-      c_violet,  c_violet,  c_violet,  c_violet,  c_violet,  c_violet,
-      c_violet,  c_violet,  c_violet,  c_violet,  c_violet,  c_violet,
-      c_violet,  c_violet,  c_violet,  c_violet,  c_violet,  c_violet,
-      c_violet,  c_violet,  c_violet,  c_violet,  c_violet,  c_violet,
-                                                  c_violet,  c_violet,
+      C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN,
+      C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN,
+      C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN,
+      C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN,
+                                          C_SPRIN, C_SPRIN,
 
-      c_violet,  c_violet,  c_violet,  c_violet,  c_violet,  c_violet,
-      c_violet,  c_violet,  c_violet,  c_violet,  c_violet,  c_violet,
-      c_violet,  c_violet,  c_violet,  c_violet,  c_violet,  c_violet,
-      c_violet,  c_violet,  c_violet,  c_violet,  c_violet,  c_violet,
-      c_violet,  c_violet
+      C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN, C_AZURE,
+      C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN, C_SPRIN, C_AZURE,
+      C_SPRIN, C_ROSE,  C_ROSE,  C_ROSE,  C_ROSE,  C_AZURE,
+      C_SPRIN, C_ORANG, C_YELLO, C_YELLO, C_ORANG, C_AZURE,
+      C_SPRIN, C_SPRIN
     },
     [3] = {
-      c_orange,  c_orange,  c_orange,  c_orange,  c_orange,  c_orange,
-      c_orange,  c_orange,  c_orange,  c_orange,  c_orange,  c_orange,
-      c_orange,  c_orange,  c_orange,  c_orange,  c_orange,  c_orange,
-      c_orange,  c_orange,  c_orange,  c_orange,  c_orange,  c_orange,
-                                                  c_orange,  c_orange,
+      C_NONE, C_NONE, C_NONE, C_NONE, C_NONE, C_NONE,
+      C_NONE, C_NONE, C_NONE, C_NONE, C_AZURE, C_NONE,
+      C_NONE, C_NONE, C_NONE, C_NONE, C_AZURE, C_NONE,
+      C_NONE, C_NONE, C_NONE, C_NONE, C_NONE, C_NONE,
+                                      C_NONE, C_NONE,
 
-      c_orange,  c_orange,  c_orange,  c_orange,  c_orange,  c_orange,
-      c_orange,  c_orange,  c_orange,  c_orange,  c_orange,  c_orange,
-      c_orange,  c_orange,  c_orange,  c_orange,  c_orange,  c_orange,
-      c_orange,  c_orange,  c_orange,  c_orange,  c_orange,  c_orange,
-      c_orange,  c_orange
+      C_NONE, C_NONE, C_NONE, C_NONE, C_NONE, C_NONE,
+      C_NONE, C_NONE, C_NONE, C_NONE, C_NONE, C_NONE,
+      C_NONE, C_NONE, C_NONE, C_NONE, C_NONE, C_NONE,
+      C_NONE, C_NONE, C_NONE, C_NONE, C_NONE, C_NONE,
+      C_NONE, C_NONE
     },
+    [4] = {
+      C_VIOLE, C_ROSE,  C_ROSE,  C_ROSE,  C_ROSE,  C_ROSE,
+      C_VIOLE, C_VIOLE, C_VIOLE, C_VIOLE, C_VIOLE, C_VIOLE,
+      C_VIOLE, C_VIOLE, C_VIOLE, C_VIOLE, C_VIOLE, C_VIOLE,
+      C_VIOLE, C_VIOLE, C_VIOLE, C_VIOLE, C_VIOLE, C_VIOLE,
+                                          C_VIOLE, C_VIOLE,
 
+      C_ROSE,  C_ROSE,  C_ROSE,  C_ROSE,  C_ROSE,  C_ROSE,
+      C_VIOLE, C_VIOLE, C_VIOLE, C_VIOLE, C_VIOLE, C_ROSE,
+      C_VIOLE, C_ORANG, C_ORANG, C_ORANG, C_VIOLE, C_VIOLE,
+      C_VIOLE, C_CYAN,  C_CYAN,  C_VIOLE, C_VIOLE, C_VIOLE,
+      C_VIOLE, C_VIOLE
+    },
 };
 
 void set_layer_color(int layer) {
@@ -108,6 +126,9 @@ bool rgb_matrix_indicators_user(void) {
       break;
     case 3:
       set_layer_color(3);
+      break;
+    case 4:
+      set_layer_color(4);
       break;
    default:
     if (rgb_matrix_get_flags() == LED_FLAG_NONE)

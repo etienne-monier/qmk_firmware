@@ -8,7 +8,7 @@
 // This include AZERTY keymap aliases
 // As I'll use the keyboard with azerty layouts only,
 // This simplifies the design a lot.
-#include "keymap_french.h"
+#include "keymap_ergol.c"
 
 // Custom functionalities
 #include "custom_unicode.c"
@@ -21,91 +21,59 @@
 
 enum layer_names {
     _BASE,
-    _1DK,
-    _SYMB,
-    _NUM,
     _NAV,
-    _MOVE,
+    _NAV_VM,
     _EDIT,
     _SYS,
 };
 
-#define DK1     OSL(_1DK)
 #define TD_KEY  TD(DANCE_0)
+#define VM  TG(_NAV_VM)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // The base alpha layer
   [_BASE] = LAYOUT_voyager(
-    KC_ESC,  FR_1,    FR_2,    FR_3,    FR_4,    FR_5,       FR_6,    FR_7,    FR_8,    FR_9,    FR_0,    KC_DEL,
-    KC_TAB,  FR_Q,    FR_C,    FR_O,    FR_P,    FR_W,       FR_J,    FR_M,    FR_D,    DK1,     FR_F,    QK_RBT,
-    MOD_LSFT,HM_A,    HM_S,    HM_E,    HM_N,    FR_COMM,    FR_L,    HM_R,    HM_T,    HM_I,    HM_U,    FR_QUOT,
-    OSL(_EDIT),FR_Z,  FR_X,    FR_MINS, FR_V,    FR_B,       FR_DOT,  FR_H,    FR_G,    FR_Y,    FR_K,    TG(_SYS),
-                   LT(_NAV, KC_BSPC),  LT(_EDIT, KC_TAB),    SFT_T(KC_ENTER), LT(_SYMB,KC_SPACE)
-  ),
-
-  // The daed key layer to write accents
-  [_1DK] = LAYOUT_voyager(
-    _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-    _______, A_CIRC,  FR_CCED, UC_OE,   O_CIRC,  _______,    _______, _______, _______, _______, U_CIRC,  _______,
-    _______, FR_AGRV, FR_EACU, FR_EGRV, E_CIRC,  _______,    _______, _______, I_CIRC,  I_TREM,  FR_UGRV, _______,
-    _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-                                        _______, _______,    _______, _______
-  ),
-
-  // The programation symbols
-  [_SYMB] = LAYOUT_voyager(
-    _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,      KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-    _______, FR_AT,   FR_LABK, FR_RABK, FR_DLR,  FR_PERC,    UD_CIRC, FR_AMPR, FR_ASTR, FR_QUOT, UD_GRV,  KC_F12,
-    _______, FR_LCBR, FR_LPRN, FR_RPRN, FR_RCBR, FR_EQL,     FR_BSLS, FR_PLUS, FR_MINS, FR_SLSH, FR_DQUO, _______,
-    FR_EURO, FR_TILD, FR_LBRC, FR_RBRC, FR_UNDS, FR_HASH,    FR_PIPE, FR_EXLM, FR_SCLN, FR_COLN, FR_QUES, _______,
-                                       MO(_NUM), _______,    _______, _______
-  ),
-
-  // Navigation keys
-  [_NUM] = LAYOUT_voyager(
-    _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-    _______, FR_1,    FR_2,    FR_3,    FR_4,    FR_5,       FR_6,    FR_7,    FR_8,    FR_9,    FR_0,    _______,
-    _______, _______, _______, _______, _______, _______,    _______, FR_DOT,  FR_COMM, _______, _______, _______,
-                                        _______, _______,    _______, _______
+    KC_ESC,  EG_1,    EG_2,    EG_3,    EG_4,    EG_5,       EG_6,    EG_7,    EG_8,    EG_9,    EG_0,    KC_DEL,
+    QK_LOCK, EG_Q,    EG_C,    EG_O,    EG_P,    EG_W,       EG_J,    EG_M,    EG_D,    EG_1DK,  EG_F,    ALGR(EG_L),
+    MOD_LSFT,HM_A,    HM_S,    HM_E,    HM_N,    EG_COMM,    EG_L,    HM_R,    HM_T,    HM_I,    HM_U,    EG_QUOT,
+    TG(VM),  EG_Z,    EG_X,    EG_MINS, EG_V,    EG_B,       EG_DOT,  EG_H,    EG_G,    EG_Y,    EG_K,    TG(_SYS),
+                   LT(_NAV, KC_BSPC),  LT(_EDIT, KC_TAB),       SFT_T(KC_ENTER), ALGR_T(KC_SPACE)
   ),
 
   // Navigation keys
   [_NAV] = LAYOUT_voyager(
-    _______, _______, _______, _______, _______, _______,    _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______,
-    _______, WORKS_1, WORKS_2, WORKS_3, WORKS_4, WORKS_5,    WORKS_6, WORKS_7, WORKS_8, WORKS_9, WORKS_0, _______,
-    _______, H_STACK, DEL_W,   TERM,    MENU,    SCR_OFF,    _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______,
-    _______, V_STACK, REBOOT,  RESIZE,  DISPLAY, _______,    _______, CLOSE_T, PREV_T,  NEXT_T,  OPEN_T,  _______,
-                                        _______, _______,    _______, OSL(_MOVE)
+    _______, MOVE_1,  MOVE_2,  MOVE_3,  MOVE_4,  MOVE_5,     MOVE_6,  MOVE_7,  MOVE_8,  MOVE_9,  MOVE_0,  KC_HOME,
+    _______, WORKS_1, WORKS_2, WORKS_3, WORKS_4, WORKS_5,    WORKS_6, WORKS_7, WORKS_8, WORKS_9, WORKS_0, KC_PGUP,
+    _______, H_STACK, DEL_W,   TERM,    MENU,    SCR_OFF,    _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_PGDN,
+    _______, V_STACK, REBOOT,  RESIZE,  DISPLAY, _______,    _______, CLOSE_T, PREV_T,  NEXT_T,  OPEN_T,  KC_END,
+                                        _______, _______,    _______, _______
   ),
 
-  // Move-to-workspace keys
-  [_MOVE] = LAYOUT_voyager(
-    _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-    _______, MOVE_1,  MOVE_2,  MOVE_3,  MOVE_4,  MOVE_5,     MOVE_6,  MOVE_7,  MOVE_8,  MOVE_9,  MOVE_0,  _______,
-    _______, _______, _______, _______, _______, _______,    _______, I3_LEFT, I3_DOWN, I3_UP,   I3_RGHT, _______,
-    _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
+  // Navigation keys (VM)
+  [_NAV_VM] = LAYOUT_voyager(
+    _______, XMOVE_1, XMOVE_2, XMOVE_3, XMOVE_4, XMOVE_5,    XMOVE_6, XMOVE_7, XMOVE_8, XMOVE_9, XMOVE_0, XRESIZU,
+    _______, XWORK_1, XWORK_2, XWORK_3, XWORK_4, XWORK_5,    XWORK_6, XWORK_7, XWORK_8, XWORK_9, XWORK_0, XRESIZL,
+    _______, XH_STAC, XDEL_W,  XTERM,   XMENU,   _______,    _______, XFOCUSL, XFOCUSD, XFOCUSU, XFOCUSR, XRESIZR,
+    _______, XV_STAC, XREBOOT, _______, _______, XFULLSC,    _______, XMOVEL,  XMOVED,  XMOVEU,  XMOVER,  XRESIZD,
                                         _______, _______,    _______, _______
   ),
 
   // Editor keys
   [_EDIT] = LAYOUT_voyager(
     _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, E_COMMT, _______,    _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, KC_F1,   _______,    _______, _______, _______, _______, _______, _______,
+    _______, _______, E_DEL_L, _______, E_BLOCK, _______,    _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,
                                         _______, _______,    _______, _______
   ),
 
   // System keys
   [_SYS] = LAYOUT_voyager(
-    RGB_TOG, RGB_MOD, RGB_SLD, RGB_VAD, RGB_VAI, _______,    _______, _______, _______, _______, _______, QK_BOOT,
-    _______, _______, COLOR_R, COLOR_G, COLOR_B, _______,    _______, KC_PSCR, _______, _______, _______, QK_RBT,
+    _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,      KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
+    _______, _______, _______, _______, _______, _______,    _______, KC_PSCR, _______, _______, _______, KC_F12,
     _______, _______, _______, _______, _______, _______,    _______, KC_VOLD, KC_VOLU, KC_MUTE, _______, _______,
-    _______, _______, _______, _______, _______, _______,    _______, KC_BRID, KC_BRIU, _______, _______, _______,
+    QK_BOOT, QK_RBT,  _______, _______, _______, _______,    _______, KC_BRID, KC_BRIU, _______, _______, _______,
                                         _______, _______,    _______, _______
   ),
 };
-
-// KC_PRINT_SCREEN
