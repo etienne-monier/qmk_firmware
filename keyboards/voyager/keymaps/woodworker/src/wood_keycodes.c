@@ -1,6 +1,6 @@
 #include QMK_KEYBOARD_H
 
-// ---- Simple keycodes ---- {{{
+// ---- Simple keycodes ----
 
 // homerow mod-taps (aliases for readability + re-use in combo definitions)
 #define HM_A    GUI_T(EG_A)

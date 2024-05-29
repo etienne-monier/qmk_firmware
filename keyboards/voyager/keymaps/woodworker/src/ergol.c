@@ -1,5 +1,4 @@
 
-#pragma once
 #include "keycodes.h"
 // clang-format off
 

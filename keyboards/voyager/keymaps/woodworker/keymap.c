@@ -5,19 +5,15 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
 
-// This include AZERTY keymap aliases
-// As I'll use the keyboard with azerty layouts only,
-// This simplifies the design a lot.
-#include "keymap_ergol.c"
+// This include ERGO-L keymap aliases
+#include "src/ergol.c"
 
 // Custom functionalities
-#include "custom_unicode.c"
-#include "custom_functions.c"
-#include "custom_keycodes.c"
-#include "custom_key_override.c"
-#include "custom_tap_dance.c"
-#include "custom_combos.c"
-#include "rgb.c"
+#include "src/wood_functions.c"
+#include "src/wood_keycodes.c"
+#include "src/wood_tap_dance.c"
+#include "src/wood_combos.c"
+#include "src/wood_rgb.c"
 
 enum layer_names {
     _BASE,
