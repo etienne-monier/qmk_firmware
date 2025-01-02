@@ -77,7 +77,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
       C_NONE, C_NONE, C_NONE, C_NONE, C_NONE, C_NONE,
       C_NONE, C_NONE, C_NONE, C_NONE, C_NONE, C_NONE,
       C_NONE, C_NONE, C_NONE, C_NONE, C_NONE, C_NONE,
-      C_NONE, C_NONE, C_NONE, C_NONE, C_NONE, C_NONE,
+      C_RED,  C_NONE, C_NONE, C_NONE, C_NONE, C_NONE,
       C_NONE, C_NONE
     },
     [4] = {

@@ -5,6 +5,13 @@ const uint16_t PROGMEM combo0[] = {
   COMBO_END
 };
 
-combo_t key_combos[COMBO_COUNT] = {
+const uint16_t PROGMEM combo1[] = {
+  EG_C,
+  EG_O,
+  COMBO_END
+};
+
+combo_t key_combos[] = {
     COMBO(combo0, KC_CAPS),
+    COMBO(combo1, KC_ESC),
 };

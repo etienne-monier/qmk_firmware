@@ -41,15 +41,16 @@
 #define MOVE_0 C(G(KC_0))
 
 // I3 commands
-#define DEL_W   CTL_T(C(G(EG_A)))
+#define DEL_W   CTL_T(C(G(EG_K)))
 #define TERM    ALT_T(G(KC_ENTER))
-#define MENU    SFT_T(G(EG_D))
-#define SCR_OFF C(G(EG_X))
+#define MENU    SFT_T(G(EG_A))
+#define SCR_OFF G(EG_X)
 #define H_STACK GUI_T(G(EG_H))
 #define V_STACK G(EG_V)
-#define REBOOT  C(G(EG_Z))
-#define RESIZE  G(EG_X)
-#define DISPLAY C(G(EG_D))
+#define REBOOT  C(G(EG_S))
+#define RESIZE  G(EG_Z)
+#define DISPLAY G(EG_D)
+#define FULLSCR C(G(KC_SPACE))
 
 #define XWORK_1 S(G(EG_Q))
 #define XWORK_2 S(G(EG_C))
@@ -95,7 +96,18 @@
 
 
 // Editor keycodes
-#define  E_DEL_L C(S(EG_K))
+#define  E_DEL_L C(S(EG_K))       // Delete lines
+#define  E_TAB_L C(KC_PAGE_DOWN)  // Go to left editor
+#define  E_TAB_R C(KC_PAGE_UP)    // Go to right editor
+
+#define  E_PREVC S(A(KC_F5))  // Prev. change
+#define  E_NEXTC A(KC_F5)     // Next change
+
+#define  E_MLDOW A(KC_DOWN)     // Move line down
+#define  E_MLUP  A(KC_UP)       // Move line up
+
+
+
 
 
 // ---- END Simple keycodes ----
@@ -104,6 +116,9 @@
 
 enum custom_keycodes {
   E_BLOCK = SAFE_RANGE,
+  E_XEDIT,
+  E_CDOWN,
+  E_CUP
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -120,7 +135,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case TERM: return mod_tap_fix(G(KC_ENTER), pressed, count);
     case MENU: return mod_tap_fix(G(EG_D), pressed, count);
 
-    case E_BLOCK: return tap_key_list(C(EG_1), C(EG_2), pressed);
+    case E_BLOCK: return editor_shortkeys(EG_1, EG_2, pressed);    // Block comment
+    case E_XEDIT: return tap_key_list(C(EG_K), C(EG_W), pressed);  // Close all editors
+    case E_CDOWN: return editor_shortkeys(EG_1, EG_3, pressed);    // Copy down
+    case E_CUP:   return editor_shortkeys(EG_1, EG_4, pressed);    // Copy up
 
     default:
       return true;

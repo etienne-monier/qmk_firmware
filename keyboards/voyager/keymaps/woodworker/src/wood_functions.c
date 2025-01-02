@@ -33,7 +33,7 @@ bool mod_tap_fix(uint16_t tap_key, bool pressed, int count) {
 }
 
 
-// Fix Mod-tap with non-simple keys being tapped.
+// Send key1 followed by key2.
 bool tap_key_list(uint16_t tap_key_1, uint16_t tap_key_2, bool pressed) {
   if (pressed) {
     tap_code16(tap_key_1);
@@ -41,4 +41,9 @@ bool tap_key_list(uint16_t tap_key_1, uint16_t tap_key_2, bool pressed) {
     return false;
   }
   return true;
+}
+
+// Send ctrl+key1 followed by ctrl+key2
+bool editor_shortkeys(uint16_t tap_key_1, uint16_t tap_key_2, bool pressed) {
+  return tap_key_list(C(tap_key_1), C(tap_key_2), pressed);
 }

@@ -30,14 +30,14 @@
 #define EG_M    KC_U    // M
 #define EG_D    KC_I    // D
 #define EG_1DK  KC_O    // dead key
-#define EG_F    KC_P    // F
+#define EG_Y    KC_P    // Y
 
 // Second row
 #define EG_A    KC_A    // A
 #define EG_S    KC_S    // S
 #define EG_E    KC_D    // E
 #define EG_N    KC_F    // N
-#define EG_COMM KC_G    // , (comma)
+#define EG_F    KC_G    // F
 #define EG_L    KC_H    // L
 #define EG_R    KC_J    // R
 #define EG_T    KC_K    // T
@@ -54,6 +54,6 @@
 #define EG_DOT  KC_N    // . (dot)
 #define EG_H    KC_M    // H
 #define EG_G    KC_COMM // G
-#define EG_Y    KC_DOT  // Y
+#define EG_COMM KC_DOT  // , (comma)
 #define EG_K    KC_SLSH // K
 
